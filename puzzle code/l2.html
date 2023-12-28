@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Puzzle - Level 2</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #output {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    #input {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #nextLevel {
+      display: none;
+    }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 50px;
+    background-color: #f7f7f7;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  #output {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  #question {
+    font-size: 18px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  #input {
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  #nextLevel {
+    display: none;
+    margin-top: 20px;
+  }
+
+  #nextLevel p {
+    color: #333;
+  }
+
+  #nextLevel button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #nextLevel button:hover {
+    background-color: #2980b9;
+  }
+
+
+  </style>
+</head>
+<body>
+  <h1>Coding Puzzle - Level 2</h1>
+  <p id="output">Guess the output of the C++ program to proceed to the next level.</p>
+  <pre id="question">
+    main()
+  {
+    char ch[]="Interviewbit Scaler";
+    int I=strlen(ch);
+    cout&lt;&lt;I&lt;&lt;endl;
+  }
+  </pre>
+  <div id="input">
+    <label for="gateInput">Enter Output:</label>
+    <input type="text" id="gateInput" placeholder="Your answer here">
+    <button onclick="checkGate()">Submit</button>
+  </div>
+  <div id="nextLevel">
+    <p>Congratulations! You've completed Level 2.</p>
+    <button onclick="nextLevel()">Go to Level 3</button>
+  </div>
+
+  <script>
+    function checkGate() {
+      var answer = document.getElementById('gateInput').value;
+      if (answer === '19') {
+        document.getElementById('output').innerHTML = 'Correct! You may proceed to the next level.';
+        document.getElementById('nextLevel').style.display = 'block';
+      } else {
+        document.getElementById('output').innerHTML = 'Incorrect! Try again.';
+      }
+    }
+
+    function nextLevel() {
+      window.location.href = 'l3.html'; // Link to the next level HTML file
+    }
+  </script>
+</body>
+</html>

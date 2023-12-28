@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Puzzle - Level 4</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #output {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    #question {
+      font-size: 18px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    #input {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #nextLevel {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #nextLevel button {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    #nextLevel button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Coding Puzzle - Level 3</h1>
+  <p id="output">Solve the math logic question to proceed to the next level.</p>
+  <pre id="question">
+    Find the missing number in the sequence:
+
+    2, 5, 10, 17, __, 37
+  </pre>
+  <div id="input">
+    <label for="mathInput">Enter the Missing Number:</label>
+    <input type="text" id="mathInput" placeholder="Your answer here">
+    <button onclick="checkMath()">Submit</button>
+  </div>
+  <div id="nextLevel">
+    <p>Congratulations! You've completed Level 3.</p>
+    <button onclick="nextLevel()">Go to Level 4</button>
+  </div>
+
+  <script>
+    function checkMath() {
+      var answer = document.getElementById('mathInput').value;
+      if (answer === '26') {
+        document.getElementById('output').innerHTML = 'Correct! You may proceed to the next level.';
+        document.getElementById('nextLevel').style.display = 'block';
+      } else {
+        document.getElementById('output').innerHTML = 'Incorrect! Try again.';
+      }
+    }
+
+    function nextLevel() {
+      window.location.href = 'l4.html'; // Link to the next level HTML file
+    }
+  </script>
+</body>
+</html>

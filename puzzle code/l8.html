@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Breaking Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #feedback {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #008000;
+      /* green color for feedback */
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4caf50;
+      /* green color for the button */
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      /* darker green color on hover */
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Coding Puzzle - Level 8</h1>
+  <h1>Code Breaking Game</h1>
+  <p>Try to guess the Three digit secret code!(e,g-453)</p>
+  <div id="feedback"></div>
+  <input type="text" id="guessInput" placeholder="Enter your guess" maxlength="4">
+  <button onclick="checkGuess()">Submit Guess</button>
+  <div id="nextLevel" style="display:none;">
+    <p>Congratulations! You've completed Level 8.</p>
+    <button onclick="nextLevel()">Go to Level 9</button>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      initializeGame();
+    });
+
+    let secretCode;
+
+    function initializeGame() {
+      secretCode = generateSecretCode();
+    }
+
+    function generateSecretCode() {
+      // Generate a random 4-digit code
+      const codeArray = [];
+      for (let i = 0; i < 3; i++) {
+        codeArray.push(Math.floor(Math.random() * 10));
+      }
+      return codeArray.join('');
+    }
+
+    function checkGuess() {
+      const guessInput = document.getElementById('guessInput');
+      const guess = guessInput.value;
+
+      if (isValidGuess(guess)) {
+        provideFeedback(guess);
+      } else {
+        alert('Invalid guess! Please enter a 4-digit number.');
+      }
+
+      // Clear the input field
+      guessInput.value = '';
+    }
+
+    function isValidGuess(guess) {
+      // Check if the guess is a 4-digit number
+      return /^\d{3}$/.test(guess);
+    }
+
+    function provideFeedback(guess) {
+      let correctDigitsAndPosition = 0;
+      let correctDigitsOnly = 0;
+
+      for (let i = 0; i < 3; i++) {
+        const digit = guess[i];
+        if (digit === secretCode[i]) {
+          correctDigitsAndPosition++;
+        } else if (secretCode.includes(digit)) {
+          correctDigitsOnly++;
+        }
+      }
+
+      displayFeedback(correctDigitsAndPosition, correctDigitsOnly);
+    }
+
+    function displayFeedback(correctDigitsAndPosition, correctDigitsOnly) {
+      const feedbackElement = document.getElementById('feedback');
+      feedbackElement.textContent = `Feedback: ${correctDigitsAndPosition} correct digits and well-placed`;
+
+      if (correctDigitsAndPosition === 3) {
+        feedbackElement.textContent += `\nCongratulations! You guessed the correct code: ${secretCode}`;
+        // You can choose to restart the game here
+        document.getElementById('nextLevel').style.display = 'block';
+      }
+    }
+
+    function nextLevel() {
+      window.location.href = 'l9.html'; // Link to the next level HTML file
+    }
+  </script>
+</body>
+
+</html>
